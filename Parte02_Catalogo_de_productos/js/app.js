@@ -123,7 +123,7 @@ function checkoutWhatsApp() {
   const total = state.cart.reduce((acc, item) => acc + item.precio * item.qty, 0);
   const lines = state.cart.map(item => `• ${item.nombre} x${item.qty} - ${money(item.precio * item.qty)}`).join("%0A");
   const text = `Hola, quiero comprar:%0A%0A${lines}%0A%0ATotal estimado: ${money(total)}%0AQuiero coordinar la entrega.`;
-  window.open(`https://wa.me/51999999999?text=${text}`, "_blank");
+  window.open(`https://wa.me/51907492293?text=${text}`, "_blank");
 }
 
 async function initProducts() {
