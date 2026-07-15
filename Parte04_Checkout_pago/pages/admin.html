@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Panel de administración de Maly'store para gestionar productos." />
+  <title>Maly'store | Admin</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/admin.css" />
+  <script defer src="../js/app.js"></script>
+  <script defer src="../js/admin.js"></script>
+</head>
+<body>
+  <header class="site-header site-header--compact">
+    <a class="brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Maly'store" class="brand__logo" />
+      <span class="brand__name">Maly'store Admin</span>
+    </a>
+    <div class="header-actions">
+      <button class="btn btn--ghost" id="themeToggle" type="button">🌙</button>
+      <a class="btn btn--secondary" href="../index.html">Volver a la tienda</a>
+    </div>
+  </header>
+
+  <main class="section admin-page">
+    <section class="section__head">
+      <div>
+        <h1>Panel de administración</h1>
+        <p>Agrega productos, guárdalos en el navegador y organízalos sin tocar el HTML principal.</p>
+      </div>
+      <div class="admin-badges">
+        <span class="pill">LocalStorage</span>
+        <span class="pill">Productos</span>
+        <span class="pill">Maly'store</span>
+      </div>
+    </section>
+
+    <section class="admin-grid">
+      <article class="page-card admin-card">
+        <h2>Nuevo producto</h2>
+        <form id="productForm" class="admin-form">
+          <label>Nombre
+            <input class="input" type="text" id="nombre" required />
+          </label>
+          <label>Categoría
+            <select class="input" id="categoria" required>
+              <option value="labiales">Labiales</option>
+              <option value="encajes">Encajes</option>
+              <option value="zapatillas">Zapatillas</option>
+            </select>
+          </label>
+          <label>Subcategoría
+            <input class="input" type="text" id="subcategoria" placeholder="mate, brasieres, urbanas..." required />
+          </label>
+          <label>Marca
+            <input class="input" type="text" id="marca" required />
+          </label>
+          <label>Color
+            <input class="input" type="text" id="color" required />
+          </label>
+          <label>Talla
+            <input class="input" type="text" id="talla" placeholder="S, M, 37..." />
+          </label>
+          <label>Precio
+            <input class="input" type="number" id="precio" step="0.01" min="0" required />
+          </label>
+          <label>Precio anterior
+            <input class="input" type="number" id="precioAnterior" step="0.01" min="0" />
+          </label>
+          <label>Stock
+            <input class="input" type="number" id="stock" min="0" required />
+          </label>
+          <label>Descripción
+            <textarea class="input admin-textarea" id="descripcion" rows="4" required></textarea>
+          </label>
+          <label>Imagen (ruta)
+            <input class="input" type="text" id="imagen" value="../img/producto-labial-rosa.svg" />
+          </label>
+          <label class="admin-check">
+            <input type="checkbox" id="destacado" />
+            <span>Producto destacado</span>
+          </label>
+          <button class="btn btn--primary" type="submit">Guardar producto</button>
+        </form>
+      </article>
+
+      <article class="page-card admin-card">
+        <div class="catalog-title">
+          <div>
+            <h2>Productos guardados</h2>
+            <p>Se muestran los productos añadidos desde este panel.</p>
+          </div>
+          <button class="btn btn--secondary" id="resetProducts" type="button">Restaurar base</button>
+        </div>
+
+        <div class="filters">
+          <input class="input" type="search" id="adminSearch" placeholder="Buscar por nombre, marca o color" />
+          <select class="input" id="adminCategory">
+            <option value="">Todas las categorías</option>
+            <option value="labiales">Labiales</option>
+            <option value="encajes">Encajes</option>
+            <option value="zapatillas">Zapatillas</option>
+          </select>
+        </div>
+
+        <div id="adminStats" class="admin-stats"></div>
+        <div id="adminList" class="admin-list"></div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
