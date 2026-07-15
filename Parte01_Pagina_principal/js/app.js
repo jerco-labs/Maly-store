@@ -170,3 +170,63 @@ async function main() {
 }
 
 main();
+
+
+
+
+const btnYape = document.getElementById("btnYape");
+const btnPlin = document.getElementById("btnPlin");
+
+if(btnYape){
+    btnYape.addEventListener("click", function(){
+
+        alert("Aquí aparecerá el QR de Yape.");
+
+    });
+}
+
+if(btnPlin){
+    btnPlin.addEventListener("click", function(){
+
+        alert("Aquí aparecerá el QR de Plin.");
+
+    });
+}
+
+
+
+
+
+const btnYape = document.getElementById("btnYape");
+const btnPlin = document.getElementById("btnPlin");
+
+const modal = document.getElementById("paymentModal");
+const modalQR = document.getElementById("modalQR");
+const modalTitle = document.getElementById("modalTitle");
+const closeModal = document.querySelector(".close-modal");
+
+if(btnYape){
+    btnYape.onclick = function(){
+        modal.style.display = "flex";
+        modalTitle.textContent = "Pago por Yape";
+        modalQR.src = "Parte01_Pagina_principal/img/Yape.jpg";
+    }
+}
+
+if(btnPlin){
+    btnPlin.onclick = function(){
+        modal.style.display = "flex";
+        modalTitle.textContent = "Pago por Plin";
+        modalQR.src = "Parte01_Pagina_principal/img/Plin.jpg";
+    }
+}
+
+closeModal.onclick = function(){
+    modal.style.display = "none";
+}
+
+window.onclick = function(e){
+    if(e.target == modal){
+        modal.style.display = "none";
+    }
+}
