@@ -128,11 +128,13 @@ function checkoutWhatsApp() {
 
 async function initProducts() {
   try {
-    const res = await fetch("./Parte01_Pagina_principal/data/productos.json").catch(() => fetch("../data/productos.json"));
+    const res = await fetch("./Parte01_Pagina_principal/data/productos.json");
     state.products = await res.json();
-  } catch {
+  } catch (e) {
+    console.error(e);
     state.products = [];
   }
+
   updateCartCount();
   renderFeatured();
   renderCatalog();
