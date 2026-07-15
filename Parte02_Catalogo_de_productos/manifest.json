@@ -1,9 +1,0 @@
-{
-  "name": "Maly'store",
-  "short_name": "Maly'store",
-  "start_url": "/index.html",
-  "display": "standalone",
-  "background_color": "#fff8fa",
-  "theme_color": "#f7d9e0",
-  "icons": []
-}

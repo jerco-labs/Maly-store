@@ -1,6 +1,6 @@
-# Maly'store - Parte 1
+# Maly'store - Parte 2
 
-Esta primera entrega prepara la estructura del proyecto.
+Esta segunda entrega prepara la estructura del proyecto.
 
 Pasos:
 1. Crea una carpeta llamada MalyStore.
