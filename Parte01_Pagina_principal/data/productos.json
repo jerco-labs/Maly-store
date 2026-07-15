@@ -12,7 +12,7 @@
     "stock": 18,
     "destacado": true,
     "descripcion": "Labial de acabado mate con color intenso y larga duración.",
-    "imagen": "../img/Labial_velvet_rosa.jpg"
+    "imagen": "Parte01_Pagina_principal/img/Labial_velvet_rosa.jpg"
   },
   {
     "id": "enc-01",
@@ -27,7 +27,7 @@
     "stock": 5,
     "destacado": true,
     "descripcion": "Interior cómodo, coqueto y con excelente acabado.",
-    "imagen": "../img/Boxer_encaje_lila.jpeg"
+    "imagen": "Parte01_Pagina_principal/img/Boxer_encaje_lila.jpeg"
   },
   {
     "id": "zap-01",
@@ -42,7 +42,7 @@
     "stock": 3,
     "destacado": true,
     "descripcion": "Zapatilla ligera y versátil para usar todos los días.",
-    "imagen": "../img/Zapatilla_adidas_gris.jpeg"
+    "imagen": "Parte01_Pagina_principal/img/Zapatilla_adidas_gris.jpeg"
   },
   {
     "id": "lab-02",
@@ -57,7 +57,7 @@
     "stock": 22,
     "destacado": false,
     "descripcion": "Color vibrante con brillo elegante y aplicación suave.",
-    "imagen": "../img/Labial_cherry_kiss.jpg"
+    "imagen": "Parte01_Pagina_principal/img/Labial_cherry_kiss.jpg"
   },
   {
     "id": "con-01",
@@ -72,7 +72,7 @@
     "stock": 8,
     "destacado": false,
     "descripcion": "Conjunto de encaje femenino con detalles delicados.",
-    "imagen": "../img/Conjunto_encaje_palorosa.jpeg"
+    "imagen": "Parte01_Pagina_principal/img/Conjunto_encaje_palorosa.jpeg"
   },
   {
     "id": "zap-02",
@@ -87,6 +87,6 @@
     "stock": 1,
     "destacado": false,
     "descripcion": "Modelo cómodo y moderno para outfit casual.",
-    "imagen": "../img/producto-sneakers.svg"
+    "imagen": "Parte01_Pagina_principal/img/producto-sneakers.svg"
   }
 ]
