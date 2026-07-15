@@ -1,4 +1,4 @@
-# Maly'store - Parte 2
+# Maly'store - Parte 1
 
 Esta entrega incluye:
 - `index.html`
