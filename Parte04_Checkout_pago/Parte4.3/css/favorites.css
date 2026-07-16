@@ -1,0 +1,34 @@
+
+.coupon-card{
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.coupon-row{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap:.75rem;
+  align-items:center;
+}
+.coupon-message{
+  color: var(--muted);
+  margin: .8rem 0 0;
+}
+.favorite-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.35rem;
+  padding:.35rem .7rem;
+  border-radius:999px;
+  background: rgba(217,107,150,.12);
+  color: var(--primary-dark);
+  font-weight:700;
+  font-size:.9rem;
+}
+.favorite-empty{
+  grid-column: 1 / -1;
+  padding: 1rem;
+  border: 1px dashed var(--border);
+  border-radius: 18px;
+  background: var(--bg-soft);
+  color: var(--muted);
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maly'store | Favoritos 4.3</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/favorites.css" />
+  <script defer src="../js/app.js"></script>
+  <script defer src="../js/favorites.js"></script>
+</head>
+<body>
+  <header class="site-header site-header--compact">
+    <a class="brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Maly'store" class="brand__logo" />
+      <span class="brand__name">Maly'store</span>
+    </a>
+    <div class="header-actions">
+      <a class="btn btn--secondary" href="checkout.html">🛒 Checkout</a>
+      <a class="btn btn--secondary" href="admin.html">⚙️ Admin</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <section class="section__head">
+      <div>
+        <h1>Favoritos</h1>
+        <p>Guarda tus productos preferidos y recupéralos cuando quieras.</p>
+      </div>
+      <button class="btn btn--secondary" id="clearFavoritesBtn" type="button">Vaciar favoritos</button>
+    </section>
+
+    <div id="favoritesGrid" class="grid"></div>
+  </main>
+</body>
+</html>

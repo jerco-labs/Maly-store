@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maly'store | Checkout 4.3</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/favorites.css" />
+  <script defer src="../js/app.js"></script>
+  <script defer src="../js/coupons.js"></script>
+</head>
+<body>
+  <header class="site-header site-header--compact">
+    <a class="brand" href="../index.html">
+      <img src="../img/logo.svg" alt="Maly'store" class="brand__logo" />
+      <span class="brand__name">Maly'store</span>
+    </a>
+    <div class="header-actions">
+      <a class="btn btn--secondary" href="favoritos.html">❤️ Favoritos</a>
+      <a class="btn btn--secondary" href="admin.html">⚙️ Admin</a>
+    </div>
+  </header>
+
+  <main class="section">
+    <section class="section__head">
+      <div>
+        <h1>Checkout</h1>
+        <p>Aplica un cupón, revisa tu total y confirma tu pedido por WhatsApp.</p>
+      </div>
+    </section>
+
+    <article class="page-card coupon-card">
+      <h2>Cupones de descuento</h2>
+      <div class="coupon-row">
+        <input class="input" id="couponInput" type="text" placeholder="Ingresa tu cupón: MALY10, ENVIOFREE, NUEVA10" />
+        <button class="btn btn--primary" id="applyCouponBtn" type="button">Aplicar cupón</button>
+      </div>
+      <p id="couponMessage" class="coupon-message">Los cupones se aplican al total del carrito.</p>
+    </article>
+
+    <article class="page-card">
+      <div class="catalog-title">
+        <div>
+          <h2>Resumen del carrito</h2>
+          <p>Si ya agregaste productos, verás aquí el detalle y el total actualizado.</p>
+        </div>
+      </div>
+      <div id="checkoutCartList" class="cart-list"></div>
+
+      <div class="checkout-card">
+        <div>
+          <strong>Subtotal:</strong>
+          <span id="checkoutSubtotal">S/ 0.00</span>
+        </div>
+        <div>
+          <strong>Descuento:</strong>
+          <span id="checkoutDiscount">S/ 0.00</span>
+        </div>
+        <div>
+          <strong>Total:</strong>
+          <span id="checkoutTotal">S/ 0.00</span>
+        </div>
+        <button class="btn btn--primary" id="checkoutWhatsAppBtn" type="button">Confirmar por WhatsApp</button>
+      </div>
+    </article>
+
+    <article class="page-card">
+      <h2>Pago por Yape / Plin</h2>
+      <p>Escanea el QR correspondiente y coordina la entrega por WhatsApp.</p>
+      <div class="payments">
+        <div class="payment-box">
+          <h3>Yape</h3>
+          <img src="../img/qr-yape.svg" alt="Código QR Yape" />
+        </div>
+        <div class="payment-box">
+          <h3>Plin</h3>
+          <img src="../img/qr-plin.svg" alt="Código QR Plin" />
+        </div>
+      </div>
+    </article>
+  </main>
+</body>
+</html>

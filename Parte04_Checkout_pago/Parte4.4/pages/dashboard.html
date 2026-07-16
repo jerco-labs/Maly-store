@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MalyStore | Dashboard</title>
+  <link rel="stylesheet" href="../css/dashboard.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div>
+          <h1>MalyStore</h1>
+          <p>Panel de control</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item active" href="#dashboard">Dashboard</a>
+        <a class="nav-item" href="#ventas">Ventas</a>
+        <a class="nav-item" href="#productos">Productos</a>
+        <a class="nav-item" href="#clientes">Clientes</a>
+        <a class="nav-item" href="#ajustes">Ajustes</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <span class="label">Estado del sistema</span>
+        <strong>Operativo</strong>
+        <p>Última sincronización: <span id="lastSync">hoy</span></p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar" id="dashboard">
+        <div>
+          <p class="eyebrow">Resumen general</p>
+          <h2>Dashboard de ventas e inventario</h2>
+          <p class="subtitle">Seguimiento de pedidos, clientes, productos y rendimiento semanal.</p>
+        </div>
+
+        <div class="topbar-actions">
+          <button class="btn btn-secondary" id="refreshBtn">Actualizar</button>
+          <button class="btn btn-primary">Exportar reporte</button>
+        </div>
+      </header>
+
+      <section class="kpi-grid">
+        <article class="card kpi">
+          <span class="label">Ventas de hoy</span>
+          <strong id="salesToday">S/ 0</strong>
+          <span class="trend up">+12.4% vs ayer</span>
+        </article>
+        <article class="card kpi">
+          <span class="label">Pedidos activos</span>
+          <strong id="ordersActive">0</strong>
+          <span class="trend">En preparación</span>
+        </article>
+        <article class="card kpi">
+          <span class="label">Productos en stock</span>
+          <strong id="stockCount">0</strong>
+          <span class="trend up">Disponibilidad saludable</span>
+        </article>
+        <article class="card kpi">
+          <span class="label">Clientes nuevos</span>
+          <strong id="newCustomers">0</strong>
+          <span class="trend down">Comparado con ayer</span>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="card chart-card" id="ventas">
+          <div class="card-head">
+            <div>
+              <h3>Ventas semanales</h3>
+              <p>Ingresos por día durante los últimos 7 días.</p>
+            </div>
+            <select id="periodFilter" aria-label="Seleccionar periodo">
+              <option value="7">Últimos 7 días</option>
+              <option value="14">Últimos 14 días</option>
+              <option value="30">Últimos 30 días</option>
+            </select>
+          </div>
+          <div class="chart" id="salesChart" aria-label="Gráfico de ventas"></div>
+        </article>
+
+        <article class="card list-card" id="productos">
+          <div class="card-head">
+            <div>
+              <h3>Top productos</h3>
+              <p>Los más vendidos en el período actual.</p>
+            </div>
+          </div>
+          <ul class="item-list" id="topProducts"></ul>
+        </article>
+
+        <article class="card table-card" id="clientes">
+          <div class="card-head">
+            <div>
+              <h3>Pedidos recientes</h3>
+              <p>Últimas transacciones registradas.</p>
+            </div>
+            <input id="searchInput" class="search" type="search" placeholder="Buscar pedido o cliente" />
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Pedido</th>
+                  <th>Cliente</th>
+                  <th>Estado</th>
+                  <th>Monto</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTable"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card notes-card" id="ajustes">
+          <div class="card-head">
+            <div>
+              <h3>Alertas rápidas</h3>
+              <p>Indicadores para tomar decisiones.</p>
+            </div>
+          </div>
+          <div class="alert success">Inventario estable en categorías principales.</div>
+          <div class="alert warning">Revisar productos con rotación lenta esta semana.</div>
+          <div class="alert info">Campaña de descuentos programada para viernes.</div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>
