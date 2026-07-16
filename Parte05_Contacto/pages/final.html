@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MalyStore | Parte Final</title>
+  <link rel="stylesheet" href="../css/final.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div>
+          <h1>MalyStore</h1>
+          <p>Parte final del proyecto</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="nav-item active" href="#resumen">Resumen</a>
+        <a class="nav-item" href="#despliegue">Despliegue</a>
+        <a class="nav-item" href="#calidad">Calidad</a>
+        <a class="nav-item" href="#entrega">Entrega</a>
+      </nav>
+
+      <div class="sidebar-card">
+        <span class="label">Estado del proyecto</span>
+        <strong id="projectStatus">Listo para entregar</strong>
+        <p id="projectMeta">Versión estable final</p>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="hero" id="resumen">
+        <div>
+          <p class="eyebrow">Cierre del proyecto</p>
+          <h2>Checklist final de MalyStore</h2>
+          <p class="subtitle">Un panel para revisar el estado del sitio, los pasos de despliegue y los últimos ajustes antes de publicar.</p>
+        </div>
+
+        <div class="hero-actions">
+          <button class="btn btn-secondary" id="resetBtn">Restablecer</button>
+          <button class="btn btn-primary" id="completeBtn">Marcar como entregado</button>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <article class="card stat">
+          <span class="label">Tareas completadas</span>
+          <strong id="doneCount">0/0</strong>
+          <span class="trend up">Progreso del cierre</span>
+        </article>
+        <article class="card stat">
+          <span class="label">Errores detectados</span>
+          <strong id="issueCount">0</strong>
+          <span class="trend">Pendientes de revisión</span>
+        </article>
+        <article class="card stat">
+          <span class="label">Tiempo estimado</span>
+          <strong id="eta">0 min</strong>
+          <span class="trend up">Para terminar la entrega</span>
+        </article>
+        <article class="card stat">
+          <span class="label">Versión</span>
+          <strong>5.0 final</strong>
+          <span class="trend">Build estable</span>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="card panel" id="despliegue">
+          <div class="card-head">
+            <div>
+              <h3>Checklist de despliegue</h3>
+              <p>Marca cada paso cuando esté listo para entregar.</p>
+            </div>
+          </div>
+          <div class="checklist" id="checklist"></div>
+        </article>
+
+        <article class="card panel" id="calidad">
+          <div class="card-head">
+            <div>
+              <h3>Indicadores de calidad</h3>
+              <p>Resumen automático del estado del proyecto.</p>
+            </div>
+          </div>
+
+          <div class="quality-list" id="qualityList"></div>
+        </article>
+
+        <article class="card panel wide" id="entrega">
+          <div class="card-head">
+            <div>
+              <h3>Registro final</h3>
+              <p>Notas de cierre y confirmación de entrega.</p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Frontend organizado</strong>
+                <p>HTML, CSS y JS separados para mantener el proyecto limpio.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Enlaces relativos verificados</strong>
+                <p>Las rutas apuntan a la carpeta principal del proyecto MalyStore.</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <span class="dot"></span>
+              <div>
+                <strong>Entrega lista</strong>
+                <p>El paquete final queda preparado para extraer y continuar si hace falta.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-note" id="footerNote">
+            Haz clic en “Marcar como entregado” para dejar constancia del cierre.
+          </div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/final.js"></script>
+</body>
+</html>
