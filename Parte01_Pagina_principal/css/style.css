@@ -105,8 +105,9 @@ code{background:#fff;border:1px solid var(--border);padding:.15rem .35rem;border
 .payment-card{
     display:flex;
     flex-direction:column;
-    gap:10px;
-    padding:30px;
+    gap:8px;
+    padding:22px;
+    height:fit-content;
 }
 
 .payment-card h2{

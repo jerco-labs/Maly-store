@@ -172,31 +172,6 @@ async function main() {
 main();
 
 
-
-
-const btnYape = document.getElementById("btnYape");
-const btnPlin = document.getElementById("btnPlin");
-
-if(btnYape){
-    btnYape.addEventListener("click", function(){
-
-        alert("Aquí aparecerá el QR de Yape.");
-
-    });
-}
-
-if(btnPlin){
-    btnPlin.addEventListener("click", function(){
-
-        alert("Aquí aparecerá el QR de Plin.");
-
-    });
-}
-
-
-
-
-
 const btnYape = document.getElementById("btnYape");
 const btnPlin = document.getElementById("btnPlin");
 
