@@ -5,6 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maly'store | Contacto</title>
   <link rel="stylesheet" href="../css/style.css" />
+
+  <style>
+    .contact-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: #fff;
+      border: 1px solid #e9e9e9;
+      border-radius: 999px;
+      padding: 8px;
+      margin-top: 1rem;
+    }
+
+    .contact-tab {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: #f4f4f4;
+      cursor: pointer;
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .contact-tab.active {
+      background: #d96aa5;
+      color: #fff;
+    }
+
+    .contact-panel {
+      display: none;
+      margin-top: 1rem;
+      padding: 18px;
+      border: 1px solid #ececec;
+      border-radius: 20px;
+      background: #fff;
+      box-shadow: 0 8px 24px rgba(0,0,0,.04);
+    }
+
+    .contact-panel.show {
+      display: block;
+    }
+
+    .zones-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .zones-left,
+    .zones-right {
+      border: 1px solid #ededed;
+      border-radius: 18px;
+      padding: 16px;
+      background: #fafafa;
+    }
+
+    .zones-title {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .zones-text {
+      margin: 0 0 14px;
+      color: #666;
+    }
+
+    .stations-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .station-chip {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      border: 1px solid #e7e7e7;
+      transition: .2s ease;
+    }
+
+    .station-chip:hover {
+      transform: translateY(-2px);
+      background: #ffe3ef;
+    }
+
+    .station-chip.active {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .station-info {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px dashed #ddd;
+      font-weight: 600;
+    }
+
+    .map-box {
+      width: 100%;
+      height: 420px;
+      border: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .map-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 16px;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-weight: 700;
+      transition: .2s ease;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn--primary {
+      background: #d96aa5;
+      color: #fff;
+    }
+
+    .btn--secondary {
+      background: #111;
+      color: #fff;
+    }
+
+    .btn--ghost {
+      background: #f5f5f5;
+      color: #111;
+      border-color: #e5e5e5;
+    }
+
+    @media (max-width: 900px) {
+      .zones-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .map-box {
+        height: 340px;
+      }
+    }
+  </style>
+
   <script defer src="../js/app.js"></script>
 </head>
 <body>
@@ -14,16 +184,140 @@
       <span class="brand__name">Maly'store</span>
     </a>
   </header>
+
   <main class="section">
     <div class="section__head">
       <h1>Contacto</h1>
       <p>Escríbeme por WhatsApp Business para coordinar tu pedido.</p>
     </div>
+
     <div class="contact-card">
-      <p><strong>WhatsApp:</strong> +51 907 492 293</p>
-      <p><strong>Instagram:</strong> @maly.store5</p>
-      <p><strong>Zona de entrega:</strong> Estaciones de la Línea 1 del Metro de Lima</p>
+      <div class="contact-tabs">
+        <button class="contact-tab active" data-target="whatsapp">😻 Escribir por WhatsApp</button>
+        <button class="contact-tab" data-target="instagram">📷 Abrir Instagram</button>
+        <button class="contact-tab" data-target="zonas">📍 Ver zonas de entrega</button>
+      </div>
+
+      <div class="contact-panel show" id="whatsapp">
+        <a
+          class="btn btn--primary"
+          href="https://wa.me/51907492293?text=Hola%20Maly%27store,%20quiero%20hacer%20un%20pedido."
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          😻 Escribir por WhatsApp
+        </a>
+      </div>
+
+      <div class="contact-panel" id="instagram">
+        <a
+          class="btn btn--secondary"
+          href="https://www.instagram.com/maly.store5/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          📷 Abrir Instagram
+        </a>
+      </div>
+
+      <div class="contact-panel" id="zonas">
+        <div class="zones-layout">
+          <div class="zones-left">
+            <h2 class="zones-title">Zonas de entrega en la Línea 1 del Metro de Lima</h2>
+            <p class="zones-text">Haz clic en una estación para verla en el mapa.</p>
+
+            <div class="stations-grid" id="stationsGrid"></div>
+
+            <div class="station-info" id="stationInfo">
+              Selecciona una estación para ver la zona de entrega.
+            </div>
+          </div>
+
+          <div class="zones-right">
+            <h2 class="zones-title">Mapa de ubicación</h2>
+            <p class="zones-text">Se actualizará según la estación que elijas.</p>
+
+            <div class="map-box">
+              <iframe
+                id="stationMap"
+                src="https://www.google.com/maps?q=Villa%20El%20Salvador,%20Lima,%20Per%C3%BA&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
+
+  <script>
+    const tabs = document.querySelectorAll(".contact-tab");
+    const panels = document.querySelectorAll(".contact-panel");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const target = tab.dataset.target;
+
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        panels.forEach((panel) => {
+          panel.classList.toggle("show", panel.id === target);
+        });
+      });
+    });
+
+    const stations = [
+      { name: "Villa El Salvador", query: "Villa El Salvador, Lima, Perú" },
+      { name: "Parque Industrial", query: "Parque Industrial, Villa El Salvador, Lima, Perú" },
+      { name: "Pumacahua", query: "Pumacahua, Lima, Perú" },
+      { name: "Villa María", query: "Villa María del Triunfo, Lima, Perú" },
+      { name: "María Auxiliadora", query: "María Auxiliadora, Lima, Perú" },
+      { name: "San Juan", query: "San Juan de Miraflores, Lima, Perú" },
+      { name: "Atocongo", query: "Atocongo, Lima, Perú" },
+      { name: "Jorge Chávez", query: "Jorge Chávez, Lima, Perú" },
+      { name: "Ayacucho", query: "Ayacucho, Lima, Perú" },
+      { name: "Cabitos", query: "Cabitos, Lima, Perú" },
+      { name: "Angamos", query: "Angamos, Lima, Perú" },
+      { name: "San Borja Sur", query: "San Borja Sur, Lima, Perú" },
+      { name: "La Cultura", query: "La Cultura, Lima, Perú" },
+      { name: "Arriola", query: "Arriola, Lima, Perú" },
+      { name: "Gamarra", query: "Gamarra, Lima, Perú" },
+      { name: "Miguel Grau", query: "Miguel Grau, Lima, Perú" },
+      { name: "El Ángel", query: "El Ángel, Lima, Perú" },
+      { name: "Presbítero Maestro", query: "Presbítero Maestro, Lima, Perú" },
+      { name: "Caja de Agua", query: "Caja de Agua, Lima, Perú" },
+      { name: "Pirámide del Sol", query: "Pirámide del Sol, Lima, Perú" },
+      { name: "Los Jardines", query: "Los Jardines, Lima, Perú" },
+      { name: "Los Postes", query: "Los Postes, Lima, Perú" },
+      { name: "San Carlos", query: "San Carlos, Lima, Perú" },
+      { name: "San Martín", query: "San Martín, Lima, Perú" },
+      { name: "Santa Rosa", query: "Santa Rosa, Lima, Perú" },
+      { name: "Bayóvar", query: "Bayóvar, Lima, Perú" }
+    ];
+
+    const grid = document.getElementById("stationsGrid");
+    const info = document.getElementById("stationInfo");
+    const map = document.getElementById("stationMap");
+
+    stations.forEach((station) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "station-chip";
+      chip.textContent = station.name;
+
+      chip.addEventListener("click", () => {
+        document.querySelectorAll(".station-chip").forEach((c) => c.classList.remove("active"));
+        chip.classList.add("active");
+
+        info.textContent = `📦 Entrega disponible en ${station.name}`;
+        map.src = `https://www.google.com/maps?q=${encodeURIComponent(station.query)}&output=embed`;
+      });
+
+      grid.appendChild(chip);
+    });
+  </script>
 </body>
 </html>
