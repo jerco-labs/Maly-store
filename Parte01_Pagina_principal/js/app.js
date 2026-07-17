@@ -1,4 +1,3 @@
-
 const money = n => `S/ ${Number(n).toFixed(2)}`;
 const cartKey = "malystore_cart";
 const themeKey = "malystore_theme";
@@ -15,19 +14,45 @@ function saveCart() {
 
 function updateCartCount() {
   const count = state.cart.reduce((acc, item) => acc + item.qty, 0);
-  document.querySelectorAll("#cartCount").forEach(el => el.textContent = count);
+  document.querySelectorAll("#cartCount").forEach(el => (el.textContent = count));
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem(themeKey, theme);
+
+  const btn = document.getElementById("themeToggle");
+  if (btn) {
+    btn.textContent = theme === "dark" ? "☀️" : "🌙";
+    btn.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Cambiar a tema claro" : "Cambiar a tema oscuro"
+    );
+  }
+
+  const metaTheme = document.querySelector('meta[name="theme-color"]');
+  if (metaTheme) {
+    metaTheme.setAttribute("content", theme === "dark" ? "#141016" : "#f7d9e0");
+  }
 }
 
 function loadTheme() {
-  const theme = localStorage.getItem(themeKey) || "light";
-  document.documentElement.dataset.theme = theme;
+  const savedTheme = localStorage.getItem(themeKey);
+
+  if (savedTheme === "dark" || savedTheme === "light") {
+    applyTheme(savedTheme);
+    return;
+  }
+
+  const prefersDark =
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  applyTheme(prefersDark ? "dark" : "light");
 }
 
 function toggleTheme() {
   const current = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
-  const next = current === "dark" ? "light" : "dark";
-  document.documentElement.dataset.theme = next;
-  localStorage.setItem(themeKey, next);
+  applyTheme(current === "dark" ? "light" : "dark");
 }
 
 function productCard(product) {
@@ -53,10 +78,21 @@ function productCard(product) {
 function addToCart(id) {
   const product = state.products.find(p => p.id === id);
   if (!product) return;
+
   const found = state.cart.find(item => item.id === id);
-  if (found) found.qty += 1;
-  else state.cart.push({ id, nombre: product.nombre, precio: product.precio, qty: 1 });
+  if (found) {
+    found.qty += 1;
+  } else {
+    state.cart.push({
+      id,
+      nombre: product.nombre,
+      precio: product.precio,
+      qty: 1,
+    });
+  }
+
   saveCart();
+  renderCart();
 }
 
 function renderFeatured() {
@@ -80,7 +116,8 @@ function renderCatalog() {
 
   const search = (document.getElementById("searchInput")?.value || "").toLowerCase();
   const priceFilter = document.getElementById("priceFilter")?.value || "";
-  let items = state.products.filter(p => p.categoria === cat);
+
+  let items = state.products.filter(p => p.categoria.toLowerCase() === cat.toLowerCase());
 
   if (search) {
     items = items.filter(p =>
@@ -108,21 +145,32 @@ function renderCart() {
   const total = state.cart.reduce((acc, item) => acc + item.precio * item.qty, 0);
   totalEl.textContent = money(total);
 
-  list.innerHTML = state.cart.map(item => `
-    <div class="cart-item">
-      <div>
-        <strong>${item.nombre}</strong>
-        <div class="hero__text">${money(item.precio)} × ${item.qty}</div>
+  list.innerHTML = state.cart
+    .map(
+      item => `
+      <div class="cart-item">
+        <div>
+          <strong>${item.nombre}</strong>
+          <div class="hero__text">${money(item.precio)} × ${item.qty}</div>
+        </div>
+        <div><strong>${money(item.precio * item.qty)}</strong></div>
       </div>
-      <div><strong>${money(item.precio * item.qty)}</strong></div>
-    </div>
-  `).join("");
+    `
+    )
+    .join("");
 }
 
 function checkoutWhatsApp() {
   const total = state.cart.reduce((acc, item) => acc + item.precio * item.qty, 0);
-  const lines = state.cart.map(item => `• ${item.nombre} x${item.qty} - ${money(item.precio * item.qty)}`).join("%0A");
-  const text = `Hola, quiero comprar:%0A%0A${lines}%0A%0ATotal estimado: ${money(total)}%0AQuiero coordinar la entrega.`;
+
+  const lines = state.cart
+    .map(item => `• ${item.nombre} x${item.qty} - ${money(item.precio * item.qty)}`)
+    .join("%0A");
+
+  const text =
+    `Hola, quiero comprar:%0A%0A${lines}` +
+    `%0A%0ATotal estimado: ${money(total)}%0AQuiero coordinar la entrega.`;
+
   window.open(`https://wa.me/51907492293?text=${text}`, "_blank");
 }
 
@@ -147,61 +195,77 @@ function bindEvents() {
     if (addBtn) addToCart(addBtn.dataset.add);
 
     if (e.target.id === "themeToggle") toggleTheme();
+
     if (e.target.id === "clearCartBtn") {
       state.cart = [];
       saveCart();
       renderCart();
     }
-    if (e.target.id === "checkoutBtn") checkoutWhatsApp();
+
+    if (e.target.id === "checkoutBtn") {
+      checkoutWhatsApp();
+    }
   });
 
   document.addEventListener("input", (e) => {
-    if (e.target.id === "searchInput" || e.target.id === "priceFilter") renderCatalog();
+    if (e.target.id === "searchInput" || e.target.id === "priceFilter") {
+      renderCatalog();
+    }
+  });
+}
+
+function setupPaymentModal() {
+  const btnYape = document.getElementById("btnYape");
+  const btnPlin = document.getElementById("btnPlin");
+  const modal = document.getElementById("paymentModal");
+  const modalQR = document.getElementById("modalQR");
+  const modalTitle = document.getElementById("modalTitle");
+  const closeModal = document.querySelector(".close-modal");
+
+  if (btnYape && modal && modalQR && modalTitle) {
+    btnYape.onclick = function () {
+      modal.style.display = "flex";
+      modalTitle.textContent = "Pago por Yape";
+      modalQR.src = "Parte01_Pagina_principal/img/Yape.jpg";
+    };
+  }
+
+  if (btnPlin && modal && modalQR && modalTitle) {
+    btnPlin.onclick = function () {
+      modal.style.display = "flex";
+      modalTitle.textContent = "Pago por Plin";
+      modalQR.src = "Parte01_Pagina_principal/img/Plin.jpg";
+    };
+  }
+
+  if (closeModal && modal) {
+    closeModal.onclick = function () {
+      modal.style.display = "none";
+    };
+  }
+
+  window.addEventListener("click", function (e) {
+    if (modal && e.target === modal) {
+      modal.style.display = "none";
+    }
   });
 }
 
 async function main() {
   loadTheme();
   bindEvents();
+  setupPaymentModal();
   await initProducts();
+
   if ("serviceWorker" in navigator) {
-    try { navigator.serviceWorker.register("./service-worker.js").catch(() => navigator.serviceWorker.register("../service-worker.js")); } catch {}
+    try {
+      navigator.serviceWorker
+        .register("./service-worker.js")
+        .catch(() => navigator.serviceWorker.register("../service-worker.js"));
+    } catch (error) {
+      console.warn("Service Worker no se pudo registrar:", error);
+    }
   }
 }
 
 main();
-
-
-const btnYape = document.getElementById("btnYape");
-const btnPlin = document.getElementById("btnPlin");
-
-const modal = document.getElementById("paymentModal");
-const modalQR = document.getElementById("modalQR");
-const modalTitle = document.getElementById("modalTitle");
-const closeModal = document.querySelector(".close-modal");
-
-if(btnYape){
-    btnYape.onclick = function(){
-        modal.style.display = "flex";
-        modalTitle.textContent = "Pago por Yape";
-        modalQR.src = "Parte01_Pagina_principal/img/Yape.jpg";
-    }
-}
-
-if(btnPlin){
-    btnPlin.onclick = function(){
-        modal.style.display = "flex";
-        modalTitle.textContent = "Pago por Plin";
-        modalQR.src = "Parte01_Pagina_principal/img/Plin.jpg";
-    }
-}
-
-closeModal.onclick = function(){
-    modal.style.display = "none";
-}
-
-window.onclick = function(e){
-    if(e.target == modal){
-        modal.style.display = "none";
-    }
-}
