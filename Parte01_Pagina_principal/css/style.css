@@ -226,3 +226,59 @@ code{background:#fff;border:1px solid var(--border);padding:.15rem .35rem;border
     color:#555;
     font-weight:600;
 }
+
+.instagram-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+}
+
+.instagram-left{
+    flex:1;
+}
+
+.instagram-left h2{
+    margin-bottom:10px;
+}
+
+.instagram-left p{
+    margin-bottom:18px;
+    color:#666;
+}
+
+.instagram-right{
+    width:130px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.instagram-qr{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    border-radius:12px;
+    border:1px solid #e6e6e6;
+    background:#fff;
+    padding:8px;
+    transition:.25s;
+}
+
+.instagram-qr:hover{
+    transform:scale(1.05);
+}
+
+@media(max-width:768px){
+
+    .instagram-container{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .instagram-right{
+        width:100%;
+        margin-top:15px;
+    }
+
+}
