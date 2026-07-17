@@ -248,20 +248,21 @@ code{background:#fff;border:1px solid var(--border);padding:.15rem .35rem;border
 }
 
 .instagram-right{
-    width:130px;
+    width:220px;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
 .instagram-qr{
-    width:120px;
-    height:120px;
+    width:200px;
+    height:200px;
     object-fit:contain;
-    border-radius:12px;
+    border-radius:18px;
     border:1px solid #e6e6e6;
     background:#fff;
-    padding:8px;
+    padding:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
     transition:.25s;
 }
 
